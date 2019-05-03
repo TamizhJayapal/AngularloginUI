@@ -12,11 +12,16 @@
 </div>
 
 <div class="row">
-  <div class="sidenav">
-    <a href="#about"><i class="fas fa-home"></i>Profile</a>
-    <a href="#services"><i class="fas fa-users"></i>Staffs</a>
-    <a href="#clients"><i class="fas fa-child"></i>Students</a>
-    <a href="#contact"><i class="fas fa-envelope"></i>Message</a>
-    <a href="#contact"><i class="fas fa-cog"></i>Setting</a>
+  <div class="col-sm-4 sidenav">
+    <a href="#about" routerLink ="/profile" ><i class="fas fa-home"></i>Profile</a>
+    <a href="#services" routerLink ="/staffs"><i class="fas fa-users"></i>Staffs</a>
+    <a href="#clients" routerLink ="/students"><i class="fas fa-child"></i>Students</a>
+    <a href="#contact" routerLink ="/message"><i class="fas fa-envelope"></i>Message</a>
+    <a href="#contact" routerLink ="/setting"><i class="fas fa-cog"></i>Setting</a>
+  </div>
+  <div class="col-sm-8">
+    <router-outlet>
+
+    </router-outlet>
   </div>
 </div>
