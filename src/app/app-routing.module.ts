@@ -6,15 +6,10 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   {
-    path: '', component: LoginComponent, pathMatch: 'full',
-/*     children : [
-      {
-        path: 'tutoapp' , component: TutoappComponent
-      }
-    ] */
+    path: '', component: LoginComponent, pathMatch: 'full'
   },
   {
-    path: 'tutoapp' , component: TutoappComponent
+    path: 'tutoapp' , component: TutoappComponent, loadChildren: './after-login/afterlogin.module#AfterLoginModule'
   },
   {
     path: '**', component: PagenotfoundComponent
