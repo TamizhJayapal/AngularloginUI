@@ -1,0 +1,42 @@
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #777;
+}
+
+h1 {
+    font-size: 34px;
+    font-weight: bold;
+    color: #555;
+}
+
+h3 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #333;
+    }
+
+p{
+    font-weight: 500;
+}
+
+#profile img{
+    margin-top: -75px;
+}
+
+#profile .card {
+    border-radius:0;
+    box-shadow: 5px 5px 15px #702323;
+    transition: all 0.3s ease-in;
+}
+
+#profile .card:hover{
+    border-radius:5px;
+    box-shadow: 5px 5px 10px #5E5E5E;
+    background: #702323;
+    color: #fff;
+    border:none;
+
+}
