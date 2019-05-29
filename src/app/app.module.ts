@@ -9,13 +9,15 @@ import { LoginService } from './services/login.service';
 import { LoginComponent } from './login/login.component';
 import { TutoappComponent } from './tutoapp/tutoapp.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     TutoappComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,7 @@ import { MessageComponent } from './message/message.component';
 import { SettingComponent } from './setting/setting.component';
 
 const approute: Routes = [
-    {path: '', redirectTo: 'profile', pathMatch: 'full' },
+    {path: '', redirectTo: 'profile', pathMatch: 'full'},
     {path: 'profile', component: ProfileComponent},
     {path: 'staffs', component: StaffsComponent},
     {path: 'students', component: StudentsComponent},
