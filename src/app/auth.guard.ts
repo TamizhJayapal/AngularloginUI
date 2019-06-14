@@ -6,8 +6,9 @@ import { AuthendicationService } from '../app/services/authendication.service';
 })
 export class AuthGuard implements CanActivate {
   constructor(private router: Router, private authendicationService: AuthendicationService) {}
+
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const currentuser = this.authendicationService.currentUserValue;
+    const currentuser = this.authendicationService.currentUserValue();
     if (currentuser) {
       return true;
     }
