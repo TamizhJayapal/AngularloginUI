@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   constructor() {}
-  title = 'School Management';
-
+  title = 'EduOrg';
   ngOnInit() {  }
 }

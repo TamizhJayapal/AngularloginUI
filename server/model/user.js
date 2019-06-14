@@ -31,6 +31,6 @@ userSchema.methods.saveCredentials = function(credential){
     })
 }
 
-const userModel = mongoose.model('userSchema', user);
+const userModel = mongoose.model('userSchema', userSchema);
 
 module.exports = userModel;

@@ -32,17 +32,17 @@ app.post('/register', (req,res)=>{
 
 
 app.post('/login', (req,res)=>{
-    var userGet = {
-        email: req.body.email,
-        password: req.body.password
-    }
-    user.findOne(userGet).then((x)=>{
-        if(!x){
-            res.status(401).send();
+    console.log(req.body.email);
+    let userData = req.body;
+    user.findOne({email: userData.email}, (error, user) => {
+        console.log(user);
+        if(!user){
+            res.status(401).send('Invalid Email');
+        }else if(user.password !== req.body.password){
+            res.status(401).send('Invalid password');
+        }else{
+            res.send(user);
         }
-       res.send(x);       
-    }).catch((e)=>{
-        res.status(400).send(e);
     });
 });
 
