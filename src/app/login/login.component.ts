@@ -8,11 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(private userservice: UserService) {}
+  constructor(private userservice: UserService, private router: Router) {}
 
   loginUser(userCred) {
-    this.userservice.loginUser(userCred).subscribe((res) => {
-      console.log(res);
+    this.userservice.loginUser(userCred).subscribe((res: any) => {
+     if (res.token) {
+        this.router.navigate(['/tutoapp']);
+     }
     });
   }
   ngOnInit() { }

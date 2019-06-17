@@ -7,6 +7,6 @@ export class AuthendicationService {
 
   constructor() { }
   currentUserValue(): boolean {
-        return false;
+        return true;
   }
 }

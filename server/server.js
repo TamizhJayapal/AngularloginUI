@@ -24,24 +24,26 @@ app.post('/register', (req,res)=>{
     }
     var userdata = new user(newUser);
     userdata.save().then((x)=>{
+        let payload = { subject : x._id }
+        let token = jwt.sign(payload, 'abc123');
         res.send(x);
-    }).catch((e)=>{
+    }).catch((token)=>{
         res.status(400).send(e);
     })
 });
 
 
 app.post('/login', (req,res)=>{
-    console.log(req.body.email);
     let userData = req.body;
     user.findOne({email: userData.email}, (error, user) => {
-        console.log(user);
         if(!user){
-            res.status(401).send('Invalid Email');
+            res.status(401).send('Email does not exist');
         }else if(user.password !== req.body.password){
             res.status(401).send('Invalid password');
         }else{
-            res.send(user);
+            let payload = { subject : user._id }
+            let token = jwt.sign(payload, 'abc123');
+            res.send({token: token});
         }
     });
 });
