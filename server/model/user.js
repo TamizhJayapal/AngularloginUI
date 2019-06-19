@@ -17,20 +17,21 @@ const userSchema = new Schema({
     }
 });
 
-userSchema.methods.saveCredentials = function(credential){
-    var user = this;
-    var password = credential.password;
-    bcrypt.genSalt(10, function(err, salt){
-        bcrypt.hash(password, salt, function(e,hash){
-            user.password = hash;
+userSchema.pre('save', (next)=>{
+    var User = this;
+    var password = User.password;
+    if(User.isModified('password')){
+        bcrypt.genSalt(10, (err, salt)=>{
+            bcrypt.hash(password, salt, (err, hash)=>{
+                console.log(hash);
+                User.password = hash;
+                next();
+            });
         });
-    });
+    }
+    next();
+});
 
-   return user.save(data).then((req,res)=>{
-        res.send(data);
-    })
-}
-
-const userModel = mongoose.model('userSchema', userSchema);
+const userModel = mongoose.model('employee', userSchema);
 
 module.exports = userModel;
