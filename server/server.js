@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
+const bcrypt  = require('bcryptjs');
 
 const user = require('./model/user');
 
@@ -22,7 +23,18 @@ app.post('/register', (req,res)=>{
         email:req.body.userEmail,
         password:req.body.userPass
     }
+
+    var password = newUser.password;
+    console.log(password);
+    bcrypt.genSalt(10, function(err, salt){
+        bcrypt.hash(password, salt, function(e,hash){
+            console.log(hash);
+            newUser.password = hash;
+        });
+    });
+
     var userdata = new user(newUser);
+    console.log(userdata);
     userdata.save().then((x)=>{
         let payload = { subject : x._id }
         let token = jwt.sign(payload, 'abc123');
@@ -30,8 +42,7 @@ app.post('/register', (req,res)=>{
     }).catch((token)=>{
         res.status(400).send(e);
     })
-});
-
+}); 
 
 app.post('/login', (req,res)=>{
     let userData = req.body;
